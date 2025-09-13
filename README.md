@@ -96,7 +96,7 @@ This dual objective serves two key purposes:
 
 - **Increased Stability**: The entropy term acts as a regularization factor, leading to more stable and robust learning.
 
-As an actor-critic method, it uses an actor network to learn the policy and a critic network to evaluate the value of states and actions, which in turn guides the actor's learning. The use of a replay buffer makes it highly sample-efficient, allowing it to learn from past experiences.
+As an actor-critic method, it uses an actor network to learn the policy and a critic network to evaluate the value of states and actions, which in turn guides the actor's learning. A key feature of modern SAC is the use of two separate Q-networks and their corresponding target networks. The target networks are updated using a soft update method to ensure training stability. This approach, along with the use of a replay buffer, makes the algorithm highly sample-efficient, allowing it to learn from past experiences.
 
 ## 📂 Environment
 We use the HalfCheetah-v5 environment from the Gymnasium and PyBullet libraries. This is a classic continuous control task where the agent must learn to run as fast as possible without falling over.
@@ -114,18 +114,18 @@ The project was structured into three main stages.
 Replay Buffer: We implemented a ReplayBuffer to store and manage transitions of the form (state, action, reward, next_state, done). This off-policy memory allows us to sample random mini-batches for training, effectively breaking temporal correlations in the data and stabilizing the learning process.
 
 ### 2. Network Architectures
-Actor Network: The actor is a feed-forward neural network that outputs the parameters (μ, σ) of a stochastic Gaussian policy. Actions are sampled from this distribution using the reparameterization trick, which allows gradients to flow back through the sampling process. A tanh activation function is applied to these actions, ensuring they are bounded within the environment's action space.
+- **Actor Network**: The actor is a feed-forward neural network that outputs the parameters (μ, σ) of a stochastic Gaussian policy. Actions are sampled from this distribution using the reparameterization trick, which allows gradients to flow back through the sampling process. A tanh activation function is applied to these actions, ensuring they are bounded within the environment's action space.
 
-Twin Critic Networks: Two separate critic networks were implemented to estimate the soft Q-value function, Q(s,a). The use of two critics, and taking the minimum of their outputs to compute the Bellman target, is a crucial technique in SAC to mitigate overestimation bias and improve training stability.
+- **Twin Critic Networks**: Two separate critic networks were implemented to estimate the soft Q-value function, Q(s,a). The use of two critics, and taking the minimum of their outputs to compute the Bellman target, is a crucial technique in SAC to mitigate overestimation bias and improve training stability. Each of these critics has a corresponding target network that is a time-delayed copy of the main critic network. The target networks are used to calculate the stable Bellman target.
 
 ### 3. Agent & Training Setup
-Agent Class: The Agent class integrates the actor, critics, and replay buffer. It orchestrates the training loop, managing the delayed policy updates, soft target network updates, and the crucial automatic entropy tuning.
+- **Agent Class**: The Agent class integrates the actor, critics, and replay buffer. It orchestrates the training loop, managing the delayed policy updates, soft target network updates, and the crucial automatic entropy tuning.
 
-Loss Function: We used Mean Squared Error (MSE) for the critic's value loss and an entropy-regularized policy gradient for the actor's policy loss.
+- **Loss Function**: We used Mean Squared Error (MSE) for the critic's value loss and an entropy-regularized policy gradient for the actor's policy loss.
 
-Optimizer: All networks were trained using the AdamW optimizer, a robust choice for deep learning.
+- **Optimizer**: All networks were trained using the AdamW optimizer, a robust choice for deep learning.
 
-Automatic Entropy Tuning: The agent was configured to automatically adjust the entropy regularization coefficient (α) to match a predefined target_entropy, thus dynamically balancing exploration and exploitation throughout training.
+- **Automatic Entropy Tuning**: The agent was configured to automatically adjust the entropy regularization coefficient (α) to match a predefined target_entropy, thus dynamically balancing exploration and exploitation throughout training.
 
 ## 📊 Results
 The SAC agent was trained on the HalfCheetah-v5 environment, successfully learning a robust running policy.
