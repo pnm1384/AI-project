@@ -71,11 +71,11 @@ This project was developed as Phase 2 of the Artificial Intelligence course (Spr
 
 We implemented the core components using PyTorch, including:
 
-- **Actor Network**: A policy network for action selection.
-
-- **Critic Networks**: Two separate Q-value networks for value estimation.
-
-- **Replay Buffer**: An off-policy memory to stabilize training.
+- **Actor Network:** A policy network for action selection.
+- 
+- **Critic Networks:** Two separate Q-value networks for value estimation, each with its own corresponding target network.
+- 
+- **Replay Buffer:** An off-policy memory to stabilize training.
 
 The agent's objective is to maximize a combination of expected return and policy entropy, encouraging robust exploration.
 
