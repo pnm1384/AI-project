@@ -116,16 +116,16 @@ Replay Buffer: We implemented a ReplayBuffer to store and manage transitions of 
 ### 2. Network Architectures
 Actor Network: The actor is a feed-forward neural network that outputs the parameters (μ, σ) of a stochastic Gaussian policy. Actions are sampled from this distribution using the reparameterization trick, which allows gradients to flow back through the sampling process. A tanh activation function is applied to these actions, ensuring they are bounded within the environment's action space.
 
-#### Twin Critic Networks: Two separate critic networks were implemented to estimate the soft Q-value function, Q(s,a). The use of two critics, and taking the minimum of their outputs to compute the Bellman target, is a crucial technique in SAC to mitigate overestimation bias and improve training stability.
+Twin Critic Networks: Two separate critic networks were implemented to estimate the soft Q-value function, Q(s,a). The use of two critics, and taking the minimum of their outputs to compute the Bellman target, is a crucial technique in SAC to mitigate overestimation bias and improve training stability.
 
 ### 3. Agent & Training Setup
 Agent Class: The Agent class integrates the actor, critics, and replay buffer. It orchestrates the training loop, managing the delayed policy updates, soft target network updates, and the crucial automatic entropy tuning.
 
-#### Loss Function: We used Mean Squared Error (MSE) for the critic's value loss and an entropy-regularized policy gradient for the actor's policy loss.
+Loss Function: We used Mean Squared Error (MSE) for the critic's value loss and an entropy-regularized policy gradient for the actor's policy loss.
 
-#### Optimizer: All networks were trained using the AdamW optimizer, a robust choice for deep learning.
+Optimizer: All networks were trained using the AdamW optimizer, a robust choice for deep learning.
 
-#### Automatic Entropy Tuning: The agent was configured to automatically adjust the entropy regularization coefficient (α) to match a predefined target_entropy, thus dynamically balancing exploration and exploitation throughout training.
+Automatic Entropy Tuning: The agent was configured to automatically adjust the entropy regularization coefficient (α) to match a predefined target_entropy, thus dynamically balancing exploration and exploitation throughout training.
 
 ## 📊 Results
 The SAC agent was trained on the HalfCheetah-v5 environment, successfully learning a robust running policy.
@@ -134,7 +134,7 @@ The SAC agent was trained on the HalfCheetah-v5 environment, successfully learni
 
 - **Effectiveness**: The recorded video of the trained agent demonstrates a smooth, well-coordinated running motion, showcasing the effectiveness of the algorithm in learning a complex continuous control task.
 
-## 👉 Overall, this project demonstrates a successful implementation of the Soft Actor-Critic algorithm, capable of solving a continuous control problem by effectively balancing reward maximization with a focus on active exploration.
+👉 Overall, this project demonstrates a successful implementation of the Soft Actor-Critic algorithm, capable of solving a continuous control problem by effectively balancing reward maximization with a focus on active exploration.
 
 ## 📜 License
 This project is for educational purposes as part of the AI course at Sharif University of Technology.
