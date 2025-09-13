@@ -111,7 +111,7 @@ We use the HalfCheetah-v5 environment from the Gymnasium and PyBullet libraries.
 The project was structured into three main stages.
 
 ### 1. Data Management
-Replay Buffer: We implemented a ReplayBuffer to store and manage transitions of the form (state, action, reward, next_state, done). This off-policy memory allows us to sample random mini-batches for training, effectively breaking temporal correlations in the data and stabilizing the learning process.
+- **Replay Buffer**: We implemented a ReplayBuffer to store and manage transitions of the form (state, action, reward, next_state, done). This off-policy memory allows us to sample random mini-batches for training, effectively breaking temporal correlations in the data and stabilizing the learning process.
 
 ### 2. Network Architectures
 - **Actor Network**: The actor is a feed-forward neural network that outputs the parameters (μ, σ) of a stochastic Gaussian policy. Actions are sampled from this distribution using the reparameterization trick, which allows gradients to flow back through the sampling process. A tanh activation function is applied to these actions, ensuring they are bounded within the environment's action space.
