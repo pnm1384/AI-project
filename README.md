@@ -9,9 +9,11 @@ We explore and build from scratch the following architectures using PyTorch:
 - **UNet**
 - **Attention UNet**
 - **Residual Attention UNet**
+
 The models are trained with a composite loss function:
 
 - **IoU Loss + Dice Loss + BCE Loss**
+
 Optimization is performed with AdamW along with a learning rate scheduler to stabilize convergence.
 
 ## 👨‍💻 Authors
@@ -28,10 +30,12 @@ We use the Massachusetts Roads Dataset, a benchmark dataset for road extraction 
 - **Input images**: 1500 aerial RGB images of size 1500×1500 pixels
 - **Ground truth masks**: Binary masks indicating road vs. non-road pixels
 - **Splits**: Training, Validation, and Test sets
+
 In this project:
 
 - **Images are resized to 256×256 for training efficiency.**
 - **Masks are normalized and thresholded for binary segmentation.**
+
 This dataset is widely used for evaluating deep learning methods in semantic segmentation.
 
 ## 🏗️ Implementation Details
@@ -53,10 +57,12 @@ Metrics: Validation loss, IoU Score, Dice Score
 ## 📊 Results
 The models were trained and evaluated on the Massachusetts Roads dataset.
 
-Model	Num Epochs	Val Loss	IoU Score	Dice Score
-UNet	15	0.59	0.69	0.81
-Attention UNet	15	0.61	0.67	0.80
-Residual Attention UNet	15	0.59	0.68	0.81
+|Model |	Num Epochs|	Val Loss	|IoU Score|	Dice Score|
+|------------------------------------------------|
+|UNet	| 15|	0.59|	0.69|	0.81|
+|Attention UNet|	15|	0.61|	0.67 | 0.80|
+|Residual Attention UNet	| 15	|0.59|	0.68	|0.81|
+
 ### Observations
 - **UNet** achieved the highest IoU (0.69) and Dice (0.81), serving as a strong baseline.
 - **Attention UNet** slightly underperformed compared to vanilla UNet, suggesting that the attention mechanism did not yield significant benefits within the given training setup and dataset size.
