@@ -1,6 +1,6 @@
 # **🚀 AI-project**
 
-# Phase 1: Image Segmentation with UNet, AttentionUNet, and ResidualAttentionUNet
+# 🧠 Phase 1: Image Segmentation with UNet, AttentionUNet, and ResidualAttentionUNet
 ## 📌 Project Overview
 This project was developed as Phase 1 of the Artificial Intelligence course (Spring 2025, Sharif University of Technology, Computer Engineering Department). It focuses on implementing image segmentation using the Massachusetts Road Dataset.
 
