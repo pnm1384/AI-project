@@ -57,11 +57,11 @@ Metrics: Validation loss, IoU Score, Dice Score
 ## 📊 Results
 The models were trained and evaluated on the Massachusetts Roads dataset.
 
-|Model |	Num Epochs|	Val Loss	|IoU Score|	Dice Score|
-|------------------------------------------------|
-|UNet	| 15|	0.59|	0.69|	0.81|
-|Attention UNet|	15|	0.61|	0.67 | 0.80|
-|Residual Attention UNet	| 15	|0.59|	0.68	|0.81|
+| Model                     | Num Epochs | Val Loss | IoU Score | Dice Score |
+|---------------------------|------------|----------|-----------|------------|
+| UNet                      | 15         | 0.59     | 0.69      | 0.81       |
+| Attention UNet            | 15         | 0.61     | 0.67      | 0.80       |
+| Residual Attention UNet   | 15         | 0.59     | 0.68      | 0.81       |
 
 ### Observations
 - **UNet** achieved the highest IoU (0.69) and Dice (0.81), serving as a strong baseline.
